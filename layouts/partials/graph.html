@@ -1,0 +1,17 @@
+<script
+  src="https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js"
+  integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI="
+  crossorigin="anonymous"
+></script>
+<div id="graph-container"></div>
+<style>
+  :root {
+    --g-node: #00A;
+    --g-node-active: #f00;
+    --g-node-inactive: #ff0;
+    --g-link: #f0c0f0;
+    --g-link-active: #5a7282;
+  }
+</style>
+{{ $js := resources.Get "js/graph.js" | resources.Fingerprint "md5" }}
+<script src="{{ $js.Permalink }}"></script>
