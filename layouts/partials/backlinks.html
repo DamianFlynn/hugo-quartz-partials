@@ -17,9 +17,9 @@
     {{- range $lnk, $ctx := $backlinks -}}
       {{$l := printf "%s%s/" $host $lnk}}
       {{$l = cond (eq $l "//") "/" $l}}
-      {{$l = (strings.TrimLeft "garden/content" $lnk) }}
+      {{$l = (strings.Replace $lnk "garden/content" "") }}
       {{with (index $contentTable $lnk)}}
-    <div class="links"><a href="/{{$l}}" data-ctx="{{$ctx}}" data-src="{{$lnk}}" class="internal-link">{{index (index . "title")}},</a></div>
+    <div class="links"><a href="{{$l}}" data-ctx="{{$ctx}}" data-src="{{$lnk}}" class="internal-link">{{index (index . "title")}},</a></div>
       {{end}}
     {{- end -}}
     {{end}}
